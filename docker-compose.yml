@@ -1,0 +1,41 @@
+version: '3.0'
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: dummypass
+    networks:
+      global_net:
+        ipv4_address: 172.16.0.2
+        
+  node:
+    image: node:latest
+    user: "node"
+    working_dir: /home/wherespace
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - /home/pi/wherespace:/home/wherespace
+    networks:
+      global_net:
+        ipv4_address: 172.16.0.3
+    ports:
+      - "8380:8381"
+    
+    # this temporary
+    command: bash -c "
+        npm install pg;
+        npm install express;
+        npm start
+      "
+    
+networks:
+  global_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24
+          gateway: 172.16.0.1
+          
