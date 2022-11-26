@@ -23,12 +23,8 @@ services:
     ports:
       - "8380:8381"
     
-    # this temporary
-    command: bash -c "
-        npm install pg;
-        npm install express;
-        npm start
-      "
+    command: sh -c 'npm install pg &&  npm install express && npm start'
+
     
 networks:
   global_net:

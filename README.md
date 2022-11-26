@@ -73,7 +73,21 @@ docker run hello-world
 ```
 
 ## Big Bang
-* Here we setup docker containers via `docker-compose.yml`, pulling `node` & `postgres` images.
+
+The following commands run at __RM__, project's directory `wherespace` .
+
+### Docker Compose
+Up docker containers via [docker-compose.yml](./docker-compose.yml) as daemon (`-d`) mode:
+
+```
+docker-compose -f docker-compose.yml up -d
+```
+
+Check if `node` container runs properly by __LM__ :
+```
+curl remote_host:8380
+```
+
 
 ## Space Expansion 
 * Here we setup/develop the __WhereSpace__ app.
@@ -88,8 +102,3 @@ docker run hello-world
 
 ## Continuum?
 - Here we put the repo URL.
-
-
-
-# TODO
-* remove `temporary` comments
