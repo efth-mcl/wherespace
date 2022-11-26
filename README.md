@@ -90,7 +90,20 @@ curl remote_host:8380
 
 
 ## Space Expansion 
-* Here we setup/develop the __WhereSpace__ app.
+
+### Database Structure
+
+
+### End Points
+
+__Create db__:
+
+__Initial Data Entry__ (Drivers' Pick Up Requests):
+
+__Pick Up Package__ (Scan Package):
+
+__Drivers' Pick Up Progress__:
+
 
 ## Big Crunch  
 * __Warning__

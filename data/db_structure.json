@@ -1,0 +1,109 @@
+{
+    "wherespace": {
+        "wherespace" : {
+            "drivers": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "name": {
+                    "dtype": "text",
+                    "require": true
+                }
+            },
+            "clusters": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "name": {
+                    "dtype": "text",
+                    "require": true
+                }
+            },
+            "packages": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "voucher":
+                {
+                    "dtype": "text",
+                    "require": true,
+                    "unique": true
+                }
+
+            },
+            "postcodes": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "code": {
+                    "dtype": "integer",
+                    "require": true
+                },
+                "id_cluster": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "clusters"
+                }
+            },
+            "pack_code": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "id_pack": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "packages"
+                },
+                "id_code": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "postcodes"
+                }
+            },
+            "pack_driver": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "id_pack": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "packages"
+                },
+                "id_driver": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "drivers"
+                }   
+            },
+            "driver_cluster": {
+                "id": {
+                    "dtype": "serial",
+                    "require": true,
+                    "primary_key": true
+                },
+                "id_driver": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "drivers"
+                },
+                "id_cluster": {
+                    "dtype": "integer",
+                    "require": true,
+                    "ref": "clusters"
+                }
+            }
+        }
+    }
+}
