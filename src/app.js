@@ -7,7 +7,6 @@ app.get('/', (req, res) => {
     res.send('Big Bang Era')
 })
 
-
 app.use('/db', db)
 
 app.listen(8381, () => {
