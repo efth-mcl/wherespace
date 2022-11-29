@@ -1,0 +1,14 @@
+html 
+    title= name 
+    body 
+        a(href="../login") Log out
+        h1= "Welcome "+ name
+        h2 Scan barcode
+        form(action="/driver/"+name, method="post")
+            input(
+                type='text'
+                name='barcode'
+            )
+            br
+            input(type="submit", value="scan")
+

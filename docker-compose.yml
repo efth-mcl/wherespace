@@ -23,7 +23,7 @@ services:
     ports:
       - "8380:8381"
     
-    command: sh -c 'npm install pg &&  npm install express && npm start'
+    command: sh -c 'npm install pg &&  npm install express && npm install pug && npm start'
 
 
 networks:

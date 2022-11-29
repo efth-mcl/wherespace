@@ -58,95 +58,95 @@
             "postcodes": {
                 "1": {
                     "code": 10041,
-                    "id_cluster": 1
+                    "id_cluster": "A"
                 },
                 "2": {
                     "code": 11332,
-                    "id_cluster": 2
+                    "id_cluster": "B"
                 },
                 "3": {
                     "code": 10042,
-                    "id_cluster": 1
+                    "id_cluster": "A"
                 },
                 "4": {
                     "code": 11342,
-                    "id_cluster": 2
+                    "id_cluster": "B"
                 },
                 "5": {
                     "code": 11444,
-                    "id_cluster": 2
+                    "id_cluster": "B"
                 },
                 "6": {
                     "code": 16788,
-                    "id_cluster": 3
+                    "id_cluster": "C"
                 },
                 "7": {
                     "code": 10043,
-                    "id_cluster": 1
+                    "id_cluster": "A"
                 },
                 "8": {
                     "code": 16800,
-                    "id_cluster": 3
+                    "id_cluster": "C"
                 },
                 "9": {
                     "code": 16801,
-                    "id_cluster": 3
-                }
-            },
-            "pack_code": {
-                "1": {
-                    "id_pack": 1,
-                    "id_code": 1
-                },
-                "2": {
-                    "id_pack": 2,
-                    "id_code": 2
-                },
-                "3": {
-                    "id_pack": 3,
-                    "id_code": 3
-                },
-                "4": {
-                    "id_pack": 4,
-                    "id_code": 3
-                },
-                "5": {
-                    "id_pack": 5,
-                    "id_code": 4
-                },
-                "6": {
-                    "id_pack": 6,
-                    "id_code": 5
-                },
-                "7": {
-                    "id_pack": 7,
-                    "id_code": 6
-                },
-                "8": {
-                    "id_pack": 8,
-                    "id_code": 7
-                },
-                "9": {
-                    "id_pack": 9,
-                    "id_code": 8
-                },
-                "10": {
-                    "id_pack": 10,
-                    "id_code": 9
+                    "id_cluster": "C"
                 }
             },
             "driver_cluster": {
                 "1": {
-                    "id_driver": 1,
-                    "id_cluster": 1
+                    "id_driver": "Moe",
+                    "id_cluster": "A"
                 },
                 "2": {
-                    "id_driver": 2,
-                    "id_cluster": 2
+                    "id_driver": "Larry",
+                    "id_cluster": "B"
                 },
                 "3": {
-                    "id_driver": 3,
-                    "id_cluster": 3
+                    "id_driver": "Curly",
+                    "id_cluster": "C"
+                }
+            },
+            "pack_code": {
+                "1": {
+                    "id_pack": "A1A",
+                    "id_code": 10041
+                },
+                "2": {
+                    "id_pack": "B2B",
+                    "id_code": 11332
+                },
+                "3": {
+                    "id_pack": "C3C",
+                    "id_code": 10042
+                },
+                "4": {
+                    "id_pack": "D4D",
+                    "id_code": 11342
+                },
+                "5": {
+                    "id_pack": "E5E",
+                    "id_code": 11444
+                },
+                "6": {
+                    "id_pack": "F6F",
+                    "id_code": 16788
+                },
+                "7": {
+                    "id_pack": "G7G",
+                    "id_code": 16788
+                },
+                "8": {
+                    "id_pack": "H8H",
+                    "id_code": 10043
+                },
+                "9": {
+                    "id_pack": "I9I",
+                    "id_code": 16800
+                },
+                "10": {
+                    "id_pack": "J0J",
+                    "id_code": 16801
                 }
             }
         }

@@ -2,55 +2,39 @@
     "wherespace": {
         "wherespace" : {
             "drivers": {
-                "id": {
-                    "dtype": "serial",
-                    "require": true,
-                    "primary_key": true
-                },
                 "name": {
                     "dtype": "text",
-                    "require": true
+                    "require": true,
+                    "primary_key": true
                 }
             },
             "clusters": {
-                "id": {
-                    "dtype": "serial",
-                    "require": true,
-                    "primary_key": true
-                },
                 "name": {
                     "dtype": "text",
-                    "require": true
+                    "require": true,
+                    "primary_key": true
                 }
             },
             "packages": {
-                "id": {
-                    "dtype": "serial",
-                    "require": true,
-                    "primary_key": true
-                },
                 "voucher":
                 {
                     "dtype": "text",
                     "require": true,
-                    "unique": true
+                    "primary_key": true
                 }
-
             },
             "postcodes": {
-                "id": {
-                    "dtype": "serial",
+                "code": {
+                    "dtype": "integer",
                     "require": true,
                     "primary_key": true
                 },
-                "code": {
-                    "dtype": "integer",
-                    "require": true
-                },
                 "id_cluster": {
-                    "dtype": "integer",
+                    "dtype": "text",
                     "require": true,
-                    "ref": "clusters"
+                    "ref": {
+                        "clusters": "name"
+                    }
                 }
             },
             "pack_code": {
@@ -60,14 +44,18 @@
                     "primary_key": true
                 },
                 "id_pack": {
-                    "dtype": "integer",
+                    "dtype": "text",
                     "require": true,
-                    "ref": "packages"
+                    "ref": {
+                        "packages": "voucher"
+                    }
                 },
                 "id_code": {
                     "dtype": "integer",
                     "require": true,
-                    "ref": "postcodes"
+                    "ref": {
+                        "postcodes": "code"
+                    }
                 }
             },
             "pack_driver": {
@@ -77,14 +65,18 @@
                     "primary_key": true
                 },
                 "id_pack": {
-                    "dtype": "integer",
+                    "dtype": "text",
                     "require": true,
-                    "ref": "packages"
+                    "ref": {
+                        "packages": "voucher"
+                    }
                 },
                 "id_driver": {
-                    "dtype": "integer",
+                    "dtype": "text",
                     "require": true,
-                    "ref": "drivers"
+                    "ref": {
+                        "drivers": "name"
+                    }
                 }   
             },
             "driver_cluster": {
@@ -94,14 +86,18 @@
                     "primary_key": true
                 },
                 "id_driver": {
-                    "dtype": "integer",
+                    "dtype": "text",
                     "require": true,
-                    "ref": "drivers"
+                    "ref": {
+                        "drivers": "name"
+                    }
                 },
                 "id_cluster": {
-                    "dtype": "integer",
+                    "dtype": "text",
                     "require": true,
-                    "ref": "clusters"
+                    "ref": {
+                        "clusters": "name"
+                    }
                 }
             }
         }

@@ -1,0 +1,36 @@
+html 
+    head 
+        title wherehouse 
+    body 
+        a(href="login") Log out
+        h1 Whererhouse
+
+        h2 Drivers Report
+
+        h3 Pick-up Plan
+        ul 
+            each val, key in pick_up_plan 
+                li= val.name + ", " + val.voucher 
+            else 
+                li No Pick Up Plan 
+
+        h3 Scanned packages 
+        ul 
+            each val, key in scanned_packs
+                li= val.id_driver + ", " + val.id_pack 
+            else 
+                li No Scanned Package 
+
+        h3 Rest packages
+        ul
+            each val, key in rest_packs
+                li= val.name + ", " + val.voucher 
+            else
+                li No rest Packages
+
+        h3 Ready Drivers
+        ul
+            each val, key in ready
+                li= val.name
+            else
+                li No ready driver

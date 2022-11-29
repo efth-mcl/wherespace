@@ -1,0 +1,12 @@
+html 
+    title Choose Driver 
+
+    body 
+        a(href="../login") Go back to login page
+        h1 Driver Choice
+        form(action="/login/driver", method="post")
+            each val, index in values
+                input(type="radio", name="name", value=val.name , id=index)
+                label(for=index)=  val.name
+            br
+            input(type="submit", value="login")

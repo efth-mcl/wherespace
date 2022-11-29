@@ -1,26 +1,5 @@
-const {Pool, Client} = require('pg')
+const {Pool} = require('pg')
 
-function create_pool(database=null) {
-    let pool = new Pool({
-        user: 'postgres',
-        host: '172.16.0.2',
-        password: 'dummypass',
-        port: 5432,
-        database: database
-      })
-      return pool
-}
-
-// function create_client(database=null) {
-//     let client = new Client({
-//         user: 'postgres',
-//         host: '172.16.0.2',
-//         password: 'dummypass',
-//         port: 5432,
-//         database: database
-//       })
-//       return client
-// }
 
 function sql_create(type='DATABASE', name, pool) {
     const query = "CREATE " + type + " " + name
@@ -56,7 +35,7 @@ function sql_alter(type='TABLE', parent_name, command='ADD COLUMN', name, attrib
 
 function sql_insert(name, columns_name, values, pool) {
 
-    // dont touch it works!!
+    // dont touch it works
     var query_text = 'INSERT INTO ' + name + "("
     var cnt = 1
     for (column_name of columns_name) {
@@ -74,7 +53,6 @@ function sql_insert(name, columns_name, values, pool) {
         text: query_text,
         values: values
     }
-
     pool.connect().then((client) => {
         return client
         .query(query)
@@ -88,12 +66,32 @@ function sql_insert(name, columns_name, values, pool) {
     })
 }
 
-// Database Class
+
+function sql_select(keys=["*"], table_name, pool) {
+    var query_text = "SELECT "
+
+    var i = 1
+    for (key of keys) {
+        query_text += key
+        if (i < keys.length) query_text += ", "
+    }
+    query_text += " FROM " + table_name
+    const results = pool.query(query_text)
+    return results
+}
+
+
+function sql_big_query(query_str, pool) {
+    const results = pool.query(query_str)
+    return results
+}
+
+
 class Database {
     constructor(name, obj) {
         this.name = name
         this.schemas = this.#setupschemas(obj)
-        this.client = new Pool({
+        this.pool = new Pool({
             user: 'postgres',
             host: '172.16.0.2',
             password: 'dummypass',
@@ -103,7 +101,7 @@ class Database {
     }
 
     create() {
-        sql_create('database', this.name, this.client)
+        sql_create('database', this.name, this.pool)
     }
     #setupschemas(obj) {
         let schemas = new Map();
@@ -123,7 +121,12 @@ class Schema {
     }
 
     create() {
-        sql_create('schema', this.name, this.parent.client)
+        sql_create('schema', this.name, this.parent.pool)
+    }
+
+    big_query(query_str) {
+        const results = sql_big_query(query_str, this.parent.pool)
+        return results
     }
 
     #setuptables(obj) {
@@ -147,7 +150,7 @@ class Table{
 
     create() {
         const name = this.parent.name + "." + this.name
-        sql_create('table', name + " ()", this.parent.parent.client)
+        sql_create('table', name + " ()", this.parent.parent.pool)
     }
 
     insert(entity_obj) {
@@ -160,7 +163,13 @@ class Table{
         
         const database = this.parent.parent.name
 
-        sql_insert(name, columns_name, values, this.parent.parent.client)
+        sql_insert(name, columns_name, values, this.parent.parent.pool)
+    }
+
+    select(keys=["*"]) {
+        const table_name = this.parent.name + "." + this.name
+        const results = sql_select(keys, table_name, this.parent.parent.pool)
+        return results
     }
 
     #setupcolumns(obj) {
@@ -200,13 +209,15 @@ class Column {
                     }
                     break;
                 case "ref":
-                    attributes.push('REFERENCES ' + this.parent.parent.name +"."+ p.attribute +' (id)')
+                    const table_name =  Object.keys(p.attribute)[0]
+                    const table_key =  Object.values(p.attribute)[0]
+                    attributes.push('REFERENCES ' + this.parent.parent.name +"."+ table_name + " (" + table_key +")")
                     break;
                 default:
                     break;
             }
         }
-        sql_alter('TABLE', parent_name, 'ADD COLUMN', this.name, attributes, this.parent.parent.parent.client)
+        sql_alter('TABLE', parent_name, 'ADD COLUMN', this.name, attributes, this.parent.parent.parent.pool)
     }
     #setupproperties(obj){
         let properties = new Map();
