@@ -92,29 +92,35 @@ curl remote_host:8380
 ## Space Expansion 
 
 ### Database Structure
-
+[![Wherespace Diagram](/readme_flies/db_diagram.svg "Data Base")](/data/db_structure.json)
 
 ### End Points
 
-__Create db__:
+__Create tables__:
 
-__Initial Data Entry__ (Drivers' Pick Up Requests):
+```
+curl remote_host:8380/db/create
+```
+__Initial data entry__:
 
-__Pick Up Package__ (Scan Package):
-
-__Drivers' Pick Up Progress__:
-
+```
+curl remote_host:8380/db/init_data
+```
 
 ## Big Crunch  
-* __Warning__
-* Here we setup/develop the __WhereSpace__ app ___clearness___.
-* __Eject__
+__Warning__
+```
+curl remote_host:8380/db/clear_tables
+```
+__Eject__
 
 ## References
 - Here we put the sources which we use for this work.
 
 ## Continuum?
-- Here we put the repo URL.
+```
+git clone https://github.com/efth-mcl/wherespace.git
+```
 
-# TODOs
-- Clean the code 
+# Future Work(s)
+- add mixed queries (e.g query.add.{ select(args), where(args), join("type of join", args) }) 

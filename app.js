@@ -32,7 +32,7 @@ wherehouse.locals.db_class = db_class
 driver.locals.db_class = db_class
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'index', message: 'Big Bang'})
+    res.render('index', { title: 'WhereSpace', message: 'WhereSpace'})
 })
 
 app.listen(8381, () => {

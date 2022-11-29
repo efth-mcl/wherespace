@@ -14,7 +14,7 @@ db.get('/create', async (req, res) => {
         }
     }
     console.log('Database '+ db_name +" Created Successfully.")
-    res.redirect('/')
+    res.send('Database '+ db_name +" Created Successfully.")
 });
 
 
@@ -35,13 +35,14 @@ db.get('/init_data', async (req, res) => {
         }
     });
     console.log('Initial data entry has been succulently, in '+ req.app.locals.db_class.name)
-    res.redirect('/')
+    res.send('Initial data entry has been succulently, in '+ req.app.locals.db_class.name)
 });
 
 db.get('/clear_tables', async (req, res) => {
     const query = "TRUNCATE wherespace.driver_cluster, wherespace.pack_driver, wherespace.pack_code, wherespace.postcodes, wherespace.drivers, wherespace.packages, wherespace.clusters"
     await req.app.locals.db_class.schemas.get("wherespace").big_query(query)
-    res.redirect('/')
+    console.log('All tables are clear')
+    res.send('All tables are clear')
 })
 
 module.exports = db
