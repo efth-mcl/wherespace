@@ -106,7 +106,11 @@ __Initial data entry__:
 ```
 curl remote_host:8380/db/init_data
 ```
+__Open Application via browser__:
 
+Type: `remote_host:8380` on browser
+
+There we find the Home page to Log In.
 ## Big Crunch  
 __Warning__
 ```
