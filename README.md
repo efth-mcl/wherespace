@@ -121,9 +121,9 @@ __Eject__
 ## References
 - [postgres docker image](https://hub.docker.com/_/postgres/)
 - [nodejs docker image](https://hub.docker.com/_/node/)
-- [node-postgres lybrary](https://node-postgres.com/)
-- [node-expres API](https://expressjs.com/)
-- [PUG tamplte engine](https://pugjs.org/api/getting-started.html)
+- [node-postgres library](https://node-postgres.com/)
+- [node-express API](https://expressjs.com/)
+- [PUG template engine](https://pugjs.org/api/getting-started.html)
 
 ## Continuum?
 ```
