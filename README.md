@@ -115,7 +115,11 @@ curl remote_host:8380/db/clear_tables
 __Eject__
 
 ## References
-- Here we put the sources which we use for this work.
+- [postgres docker image](https://hub.docker.com/_/postgres/)
+- [nodejs docker image](https://hub.docker.com/_/node/)
+- [node-postgres lybrary](https://node-postgres.com/)
+- [node-expres API](https://expressjs.com/)
+- [PUG tamplte engine](https://pugjs.org/api/getting-started.html)
 
 ## Continuum?
 ```
@@ -123,4 +127,4 @@ git clone https://github.com/efth-mcl/wherespace.git
 ```
 
 # Future Work(s)
-- add mixed queries (e.g query.add.{ select(args), where(args), join("type of join", args) }) 
+- Add mixed queries (e.g query.add.{ select(args), where(args), join("type of join", args) }) 
