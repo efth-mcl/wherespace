@@ -119,6 +119,7 @@ curl remote_host:8380/db/clear_tables
 __Eject__
 
 ## References
+- [Warehouse management API](https://github.com/Ferrum-Citadel/Warehouse-managment-API)
 - [postgres docker image](https://hub.docker.com/_/postgres/)
 - [nodejs docker image](https://hub.docker.com/_/node/)
 - [node-postgres library](https://node-postgres.com/)
